@@ -1,11 +1,22 @@
- <template>
+<template>
   <div>
-    <div class="restaurant">資料讀取中...</div>
+    <div class="restaurant" v-if="isLoading">資料讀取中...</div>
+    <Restaurant v-else />
   </div>
 </template>
 
 <script>
-export default {};
+import Restaurant from '@/components/Restaurant'
+export default {
+  components: {
+    Restaurant
+  },
+  data() {
+    return {
+      isLoading: false
+    }
+  }
+}
 </script>
 
 <style>
