@@ -14,14 +14,6 @@
 
 <script>
 import ResturantItem from './RestaurantItem'
-const listTestData = {
-  Restaurants: [
-    { id: 1, name: '美食小館', distance: [1, 2], taste: [1] },
-    { id: 2, name: '美食小館1', distance: [1], taste: [2] },
-    { id: 3, name: '美食小館2', distance: [1], taste: [1, 2] }
-  ]
-}
-
 export default {
   name: 'RestaurantView',
   components: {
@@ -30,12 +22,12 @@ export default {
   computed: {
     list: {
       get() {
-        return listTestData.Restaurants
+        return this.$store.getters.restaurantList
       }
     },
     current: {
       get() {
-        return 0
+        return this.$store.state.current
       }
     }
   },

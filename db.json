@@ -1,0 +1,40 @@
+{
+  "Restaurants": [
+    {
+      "id": 1,
+      "name": "美食小館",
+      "distance": [1, 2],
+      "taste": [1]
+    },
+    {
+      "id": 2,
+      "name": "美食小館1",
+      "distance": [1],
+      "taste": [2]
+    },
+    {
+      "id": 3,
+      "name": "美食小館2",
+      "distance": [1],
+      "taste": [2]
+    },
+    {
+      "id": 4,
+      "name": "美食小館3",
+      "distance": [1],
+      "taste": [1, 2]
+    },
+    {
+      "id": 5,
+      "name": "美食小館4",
+      "distance": [1],
+      "taste": [2]
+    },
+    {
+      "id": 6,
+      "name": "美食小館5",
+      "distance": [1],
+      "taste": [2]
+    }
+  ]
+}

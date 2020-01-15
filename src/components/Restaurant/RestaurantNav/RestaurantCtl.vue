@@ -12,10 +12,6 @@
 
 <script>
 import RestaurantBtn from './RestaurantBtn'
-const filterValue = {
-  distance: 0,
-  taste: 0
-}
 const btnNameList = {
   distance: ['全部距離', '遠距離', '近距離'],
   taste: ['全部口味', '清淡', '不清淡'],
@@ -31,7 +27,7 @@ export default {
     return {
       btnDisabled: false,
       restaurant: '',
-      filterValue
+      filterValue: this.$store.getters.filterVal
     }
   },
   computed: {
@@ -57,12 +53,13 @@ export default {
         alert('抽籤')
         this.btnDisabled = false
       } else {
+        this.$store.commit('SET_CURRENT', 0)
         let value = (btn.value + 1) % btnNameList[key].length
         this.changeFilterValue(key, value)
       }
     },
     changeFilterValue(key, value) {
-      this.filterValue[key] = value
+      this.$store.commit('SET_FILTER', { key, value })
     }
   }
 }

@@ -15,6 +15,11 @@ export default {
     return {
       isLoading: false
     }
+  },
+  async mounted() {
+    this.isLoading = true
+    await this.$store.dispatch('GET_RESTAURANT')
+    this.isLoading = false
   }
 }
 </script>
