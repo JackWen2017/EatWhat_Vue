@@ -53,7 +53,6 @@ export default {
     changeBtn(btn) {
       let key = btn.key
       if (key === 'random') {
-        alert('抽籤')
         this.startRandom()
       } else {
         let value = (btn.value + 1) % btnNameList[key].length

@@ -24,10 +24,10 @@ export default {
       this.$store.commit('restaurant/SET_CURRENT', 0)
       this.$store.commit('restaurant/SET_FILTER', { key, value })
     },
-    startRandom() {
-      this.$store.commit('restaurant/SET_CTRL_DISABLE', true)
-      alert('Random')
-      this.$store.commit('restaurant/SET_CTRL_DISABLE', false)
+    async startRandom() {
+      await this.$store.dispatch('restaurant/CHANGE_RANDOM')
+      let nowRestaurant = this.$store.getters['restaurant/nowRestaurant']
+      if (nowRestaurant) alert('就選 ' + nowRestaurant)
     }
   }
 }

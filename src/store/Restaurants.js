@@ -1,24 +1,30 @@
+let addTimes = {
+  0: 600,
+  1: 300
+}
+
+let state = {
+  current: 0,
+  btnList: {
+    distance: {
+      size: 3,
+      filterValue: 0
+    },
+    taste: {
+      size: 3,
+      filterValue: 0
+    },
+    random: {
+      size: 1,
+      filterValue: 0
+    }
+  },
+  restaurantDisable: false
+}
 let restaurant = function() {
   return {
     namespaced: true,
-    state: {
-      current: 0,
-      btnList: {
-        distance: {
-          size: 3,
-          filterValue: 0
-        },
-        taste: {
-          size: 3,
-          filterValue: 0
-        },
-        random: {
-          size: 1,
-          filterValue: 0
-        }
-      },
-      restaurantDisable: false
-    },
+    state,
     getters: {
       filterValues(state) {
         let values = {}
@@ -40,6 +46,14 @@ let restaurant = function() {
           }
         }
         return list
+      },
+
+      nowRestaurant(state, getters) {
+        let nowCurrent = state.current
+        let restaurant = getters.restaurantList
+          ? getters.restaurantList[nowCurrent]
+          : {}
+        return restaurant ? restaurant.name : ''
       }
     },
     mutations: {
@@ -54,6 +68,35 @@ let restaurant = function() {
       },
       SET_CTRL_DISABLE(state, disable) {
         state.restaurantDisable = disable
+      }
+    },
+    actions: {
+      RANDOM_MODE({ state, getters, commit }) {
+        let startTime = 0
+        let count = Math.ceil(Math.random() * 100) + 4
+        let totalSize = getters.restaurantList.length
+        let current = (state.current + 1) % totalSize
+        commit('SET_CURRENT', current)
+        for (let i = 0; i <= count; i++) {
+          let j = i < 2 ? i : count - i
+          let addTime = addTimes.hasOwnProperty(j) ? addTimes[j] : 100
+          startTime += addTime
+          setTimeout(() => {
+            let nowCurrent = (state.current + 1) % totalSize
+            commit('SET_CURRENT', nowCurrent)
+          }, startTime)
+        }
+        return startTime + 100
+      },
+      async CHANGE_RANDOM({ commit, dispatch }) {
+        commit('SET_CTRL_DISABLE', true)
+        let startTime = await dispatch('RANDOM_MODE')
+        return new Promise(async resolve => {
+          setTimeout(() => {
+            commit('SET_CTRL_DISABLE', false)
+            return resolve()
+          }, startTime)
+        })
       }
     }
   }
