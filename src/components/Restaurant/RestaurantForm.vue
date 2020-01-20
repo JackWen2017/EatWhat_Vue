@@ -11,6 +11,7 @@
         :inputType="input.type"
         :inputData="input.data"
         :placeholder="input.placeholder"
+        :disabled="ctrlDisabled"
       />
       <RestaurantBtn
         text="送出"
@@ -22,9 +23,9 @@
 </template>
 
 <script>
-import RestaurantBtn from './RestaurantBtn'
-import RestaurantText from './RestaurantText'
-import RestaurantInput from './RestaurantInput'
+import RestaurantBtn from './RestaurantCommon/RestaurantBtn'
+import RestaurantText from './RestaurantCommon/RestaurantText'
+import RestaurantInput from './RestaurantCommon/RestaurantInput'
 export default {
   name: 'RestaurantForm',
   components: {
@@ -66,6 +67,10 @@ export default {
     }
   },
   computed: {
+    ctrlDisabled() {
+      let ctrlDisable = this.$store.getters['restaurant/ctrlDisable']
+      return ctrlDisable ? ctrlDisable : false
+    },
     sendValue() {
       return this.inputList.reduce((pre, current) => {
         if (current) {
@@ -83,7 +88,7 @@ export default {
           break
         }
       }
-      return disable
+      return disable || this.ctrlDisabled
     }
   },
   methods: {

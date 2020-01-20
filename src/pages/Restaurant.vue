@@ -7,6 +7,7 @@
 
 <script>
 import Restaurant from '@/components/Restaurant'
+import restaurants from '@/store/Restaurants'
 export default {
   components: {
     Restaurant
@@ -19,7 +20,15 @@ export default {
   async mounted() {
     this.isLoading = true
     await this.$store.dispatch('GET_RESTAURANT')
+    if (!this.$store.hasModule('restaurant')) {
+      this.$store.registerModule('restaurant', restaurants())
+    }
     this.isLoading = false
+  },
+  beforeDestroy() {
+    if (this.$store.hasModule('restaurant')) {
+      this.$store.unregisterModule('restaurant')
+    }
   }
 }
 </script>

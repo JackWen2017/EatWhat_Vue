@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import RestaurantBtn from './RestaurantBtn'
+/*eslint-disable*/
+import RestaurantBtn from './RestaurantCommon/RestaurantBtn'
 const btnNameList = {
   distance: ['全部距離', '遠距離', '近距離'],
   taste: ['全部口味', '清淡', '不清淡'],
@@ -25,17 +26,20 @@ export default {
   },
   data() {
     return {
-      btnDisabled: false,
-      restaurant: '',
-      filterValue: this.$store.getters.filterVal
+      restaurant: ''
     }
   },
   computed: {
+    btnDisabled() {
+      let ctrlDisable = this.$store.getters['restaurant/ctrlDisable']
+      return ctrlDisable ? ctrlDisable : false
+    },
     btnList() {
       let btns = []
       let id = 1
+      let filterValue = this.$store.getters['restaurant/filterValues']
       for (const key in btnNameList) {
-        let value = this.filterValue[key] ? this.filterValue[key] : 0
+        let value = filterValue && filterValue[key] ? filterValue[key] : 0
         btns.push({ id, key, value })
         id++
       }
@@ -49,17 +53,18 @@ export default {
     changeBtn(btn) {
       let key = btn.key
       if (key === 'random') {
-        this.btnDisabled = true
         alert('抽籤')
-        this.btnDisabled = false
+        this.startRandom()
       } else {
-        this.$store.commit('SET_CURRENT', 0)
         let value = (btn.value + 1) % btnNameList[key].length
         this.changeFilterValue(key, value)
       }
     },
     changeFilterValue(key, value) {
-      this.$store.commit('SET_FILTER', { key, value })
+      this.$emit('changeFilter', key, value)
+    },
+    startRandom() {
+      this.$emit('startRandom')
     }
   }
 }

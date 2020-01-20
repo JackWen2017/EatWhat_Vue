@@ -9,6 +9,7 @@
       :id="inputName"
       v-model.trim="observeValue"
       :placeholder="placeholder"
+      :disabled="disabled"
     />
   </div>
 </template>
@@ -32,6 +33,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

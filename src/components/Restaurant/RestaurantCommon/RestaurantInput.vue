@@ -13,6 +13,7 @@
         :id="`${inputName}_${index + 1}`"
         :value="index + 1"
         v-model="observeValue"
+        :disabled="disabled"
       />
       <p>
         <label :for="`${inputName}_${index + 1}`">{{ data }}</label>
@@ -44,6 +45,10 @@ export default {
     value: {
       type: [Array, Number],
       default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

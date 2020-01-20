@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ResturantItem from './RestaurantItem'
+import ResturantItem from './RestaurantCommon/RestaurantItem'
 export default {
   name: 'RestaurantView',
   components: {
@@ -22,12 +22,12 @@ export default {
   computed: {
     list: {
       get() {
-        return this.$store.getters.restaurantList
+        return this.$store.getters['restaurant/restaurantList']
       }
     },
     current: {
       get() {
-        return this.$store.state.current
+        return this.$store.state.restaurant.current
       }
     }
   },
