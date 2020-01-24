@@ -71,20 +71,21 @@ let restaurant = function() {
       }
     },
     actions: {
-      RANDOM_MODE({ state, getters, commit }) {
-        let startTime = 0
-        let count = Math.ceil(Math.random() * 100) + 4
+      SET_CURRENT_TIMEOUT({ state, getters, commit }, startTime) {
         let totalSize = getters.restaurantList.length
-        let current = (state.current + 1) % totalSize
-        commit('SET_CURRENT', current)
-        for (let i = 0; i <= count; i++) {
+        setTimeout(() => {
+          let nowCurrent = (state.current + 1) % totalSize
+          commit('SET_CURRENT', nowCurrent)
+        }, startTime)
+      },
+      RANDOM_MODE({ dispatch }) {
+        let startTime = 0
+        let count = Math.ceil(Math.random() * 3) + 4
+        for (let i = 0; i <= count + 1; i++) {
           let j = i < 2 ? i : count - i
           let addTime = addTimes.hasOwnProperty(j) ? addTimes[j] : 100
+          dispatch('SET_CURRENT_TIMEOUT', startTime)
           startTime += addTime
-          setTimeout(() => {
-            let nowCurrent = (state.current + 1) % totalSize
-            commit('SET_CURRENT', nowCurrent)
-          }, startTime)
         }
         return startTime + 100
       },
