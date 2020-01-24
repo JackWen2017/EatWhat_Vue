@@ -123,13 +123,31 @@ export default {
           return
         }
       }
-      let add = await this.$store.dispatch('INSERT_RESTAURANT', this.sendValue)
-      // await this.$store.dispatch('GET_RESTAURANT')
-      if (add && JSON.stringify(add) !== '{}') {
-        let resturants = this.$store.state.restaurants
-        let newData = resturants.concat(add)
-        this.$store.commit('SET_RESTAURANT', newData)
+      let sendValue = this.sendValue
+
+      let resturants = this.$store.state.restaurants
+      let repeatData = resturants.find(
+        resturant => resturant.name === sendValue.name
+      )
+      if (repeatData) {
+        let id = repeatData.id
+        let restaurant = {
+          id,
+          data: sendValue
+        }
+        let update = await this.$store.dispatch('UPDATE_RESTAURANT', restaurant)
+        await this.$store.dispatch('GET_RESTAURANT')
+      } else {
+        let add = await this.$store.dispatch('INSERT_RESTAURANT', sendValue)
+        if (add && JSON.stringify(add) !== '{}') {
+          let resturants = this.$store.state.restaurants
+          let newData = resturants.concat(add)
+          this.$store.commit('SET_RESTAURANT', newData)
+        }
       }
+
+      // await this.$store.dispatch('GET_RESTAURANT')
+
       this.cleanInput()
     }
   }

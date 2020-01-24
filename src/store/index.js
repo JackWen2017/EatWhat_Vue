@@ -27,6 +27,7 @@ let store = new Vuex.Store({
           .get(`${jsonUrl}/Restaurants`)
           .then(result => result.data || [])
           .catch(_ => [])
+        console.log(restaurants)
         commit('SET_RESTAURANT', restaurants)
         return resolve(restaurants)
       })
@@ -43,10 +44,20 @@ let store = new Vuex.Store({
     INSERT_RESTAURANT({}, restaurant) {
       return new Promise(async resolve => {
         let insertResult = await axios
-          .post(`${jsonUrl}/Restaurants/`, restaurant)
+          .post(`${jsonUrl}/Restaurants`, restaurant)
           .then(result => result.data || {})
           .catch(err => {})
         return resolve(insertResult)
+      })
+    },
+    UPDATE_RESTAURANT({}, restaurant) {
+      return new Promise(async resolve => {
+        let updateResult = await axios
+          .patch(`${jsonUrl}/Restaurants/${restaurant.id}`, restaurant.data)
+          .then(result => result.data || {})
+          .catch(err => {})
+        console.log(updateResult)
+        return resolve(updateResult)
       })
     }
   },
