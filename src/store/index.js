@@ -30,6 +30,15 @@ let store = new Vuex.Store({
         commit('SET_RESTAURANT', restaurants)
         return resolve(restaurants)
       })
+    },
+    DELETE_RESTAURANT({ commit }, id) {
+      return new Promise(async resolve => {
+        let deleteResult = await axios
+          .delete(`${jsonUrl}/Restaurants/${id}`)
+          .then(result => result.data || {})
+          .catch(err => {})
+        return resolve(deleteResult)
+      })
     }
   },
   modules: {}

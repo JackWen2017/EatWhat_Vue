@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'RestaurantItem',
+  name: "RestaurantItem",
   props: {
     text: {
       style: String,
@@ -25,11 +25,13 @@ export default {
   methods: {
     async deleteRestaurant() {
       if (confirm(`確定刪除${this.text}?`)) {
-        alert(`刪除${this.text}`)
+        await this.$store.dispatch("DELETE_RESTAURANT", this.id);
+        this.$store.commit("restaurant/SET_CURRENT", 0);
+        await this.$store.dispatch("GET_RESTAURANT");
       }
     }
   }
-}
+};
 </script>
 
 <style>
@@ -43,7 +45,7 @@ export default {
   color: yellow;
 }
 .restaurant-item.active::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -20px;
   top: 3px;
