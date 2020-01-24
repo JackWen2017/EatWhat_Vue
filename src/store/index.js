@@ -39,6 +39,16 @@ let store = new Vuex.Store({
           .catch(err => {})
         return resolve(deleteResult)
       })
+    },
+    INSERT_RESTAURANT({}, restaurant) {
+      console.log(restaurant)
+      return new Promise(async resolve => {
+        let insertResult = await axios
+          .post(`${jsonUrl}/Restaurants/`, restaurant)
+          .then(result => result.data || {})
+          .catch(err => {})
+        return resolve(insertResult)
+      })
     }
   },
   modules: {}

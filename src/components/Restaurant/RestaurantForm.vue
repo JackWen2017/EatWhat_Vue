@@ -114,7 +114,7 @@ export default {
       this.inputList[1].value = [2]
       this.inputList[2].value = [1]
     },
-    formSend() {
+    async formSend() {
       let inputSize = this.inputList.length
       for (let i = 0; i < inputSize; i++) {
         let result = this.checkInput(i)
@@ -123,8 +123,8 @@ export default {
           return
         }
       }
-      let sendValue = JSON.stringify(this.sendValue)
-      alert(`輸入資料${sendValue}`)
+      await this.$store.dispatch('INSERT_RESTAURANT', this.sendValue)
+      await this.$store.dispatch('GET_RESTAURANT')
       this.cleanInput()
     }
   }
