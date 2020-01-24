@@ -56,7 +56,6 @@ let store = new Vuex.Store({
           .patch(`${jsonUrl}/Restaurants/${restaurant.id}`, restaurant.data)
           .then(result => result.data || {})
           .catch(err => {})
-        console.log(updateResult)
         return resolve(updateResult)
       })
     }
