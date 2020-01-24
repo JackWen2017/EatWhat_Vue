@@ -41,7 +41,6 @@ let store = new Vuex.Store({
       })
     },
     INSERT_RESTAURANT({}, restaurant) {
-      console.log(restaurant)
       return new Promise(async resolve => {
         let insertResult = await axios
           .post(`${jsonUrl}/Restaurants/`, restaurant)

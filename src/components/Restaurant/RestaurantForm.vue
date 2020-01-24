@@ -123,8 +123,13 @@ export default {
           return
         }
       }
-      await this.$store.dispatch('INSERT_RESTAURANT', this.sendValue)
-      await this.$store.dispatch('GET_RESTAURANT')
+      let add = await this.$store.dispatch('INSERT_RESTAURANT', this.sendValue)
+      // await this.$store.dispatch('GET_RESTAURANT')
+      if (add && JSON.stringify(add) !== '{}') {
+        let resturants = this.$store.state.restaurants
+        let newData = resturants.concat(add)
+        this.$store.commit('SET_RESTAURANT', newData)
+      }
       this.cleanInput()
     }
   }
