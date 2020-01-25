@@ -9,7 +9,8 @@ Vuex.Store.prototype.hasModule = function(module) {
   return this._modules.root._children[module] !== undefined
 }
 
-let jsonUrl = 'http://localhost:3001'
+// let jsonUrl = 'http://localhost:3001'
+let jsonUrl = 'https://5e2bd55d4fdc030014e211e2.mockapi.io'
 
 let store = new Vuex.Store({
   state: {
@@ -52,7 +53,7 @@ let store = new Vuex.Store({
     UPDATE_RESTAURANT({}, restaurant) {
       return new Promise(async resolve => {
         let updateResult = await axios
-          .patch(`${jsonUrl}/Restaurants/${restaurant.id}`, restaurant.data)
+          .put(`${jsonUrl}/Restaurants/${restaurant.id}`, restaurant.data)
           .then(result => result.data || {})
           .catch(err => {})
         return resolve(updateResult)
