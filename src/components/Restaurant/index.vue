@@ -1,6 +1,6 @@
 <template>
   <div>
-    <RestaurantView />
+    <RestaurantView @deleteData="deleteData" />
     <div class="restaurant-nav">
       <RestaurantForm @formSend="formSend" />
       <RestaurantCtl @changeFilter="changeFilter" @startRandom="startRandom" />
@@ -67,6 +67,18 @@ export default {
       }
       // await this.$store.dispatch('GET_RESTAURANT')
       callback()
+    },
+    async deleteData(id) {
+      await this.$store.dispatch('DELETE_RESTAURANT', id)
+      this.$store.commit('restaurant/SET_CURRENT', 0)
+      // await this.$store.dispatch("GET_RESTAURANT")
+      let resturants = this.$store.state.restaurants
+      let deleterData = resturants.find(resturant => resturant.id === id)
+      let index = resturants.indexOf(deleterData)
+      let newData = resturants
+        .slice(0, index)
+        .concat(resturants.slice(index + 1))
+      this.$store.commit('SET_RESTAURANT', newData)
     }
   }
 }

@@ -6,7 +6,6 @@
 </template>
 
 <script>
-/*eslint-disable*/
 export default {
   name: 'RestaurantItem',
   props: {
@@ -26,16 +25,7 @@ export default {
   methods: {
     async deleteRestaurant() {
       if (confirm(`確定刪除${this.text}?`)) {
-        await this.$store.dispatch('DELETE_RESTAURANT', this.id)
-        this.$store.commit('restaurant/SET_CURRENT', 0)
-        // await this.$store.dispatch("GET_RESTAURANT")
-        let resturants = this.$store.state.restaurants
-        let deleterData = resturants.find(resturant => resturant.id === this.id)
-        let index = resturants.indexOf(deleterData)
-        let newData = resturants
-          .slice(0, index)
-          .concat(resturants.slice(index + 1))
-        this.$store.commit('SET_RESTAURANT', newData)
+        this.$emit('deleteData', this.id)
       }
     }
   }

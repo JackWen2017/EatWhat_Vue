@@ -7,6 +7,7 @@
         :text="resutrant.name"
         :id="resutrant.id"
         :active="active(index)"
+        @deleteData="deleteData"
       />
     </div>
   </div>
@@ -34,6 +35,9 @@ export default {
   methods: {
     active(index) {
       return index === this.current
+    },
+    deleteData(id) {
+      this.$emit('deleteData', id)
     }
   }
 }
