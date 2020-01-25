@@ -51,7 +51,7 @@ export default {
           : resturants
       return result
     },
-    async formSend(sendValue) {
+    async formSend(sendValue, callback) {
       let resturants = this.$store.state.restaurants
       let repeatData = resturants.find(
         resturant => resturant.name === sendValue.name
@@ -66,6 +66,7 @@ export default {
         this.$store.commit('SET_RESTAURANT', newData)
       }
       // await this.$store.dispatch('GET_RESTAURANT')
+      callback()
     }
   }
 }

@@ -101,7 +101,7 @@ export default {
       let inputSize = this.inputList.length
       let disable = false
       for (let i = 0; i < inputSize; i++) {
-        disable = disable || this.checkInput(i)
+        disable = disable || this.checkInput(i) !== ''
       }
       return disable || this.ctrlDisabled
     }
@@ -115,11 +115,11 @@ export default {
       let type = inputInfo.type
 
       let validateObj = validateType[type] || validateType['default']
-      return (
+      let result =
         (validateObj.validateMethods(sendValue[key]) &&
           validateObj.validateText(name)) ||
         ''
-      )
+      return result
     },
     cleanInput() {
       this.inputList[0].value = ''
@@ -135,8 +135,7 @@ export default {
           return
         }
       }
-      await this.$emit('formSend', this.sendValue)
-      this.cleanInput()
+      await this.$emit('formSend', this.sendValue, this.cleanInput)
     }
   }
 }

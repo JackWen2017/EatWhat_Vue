@@ -27,7 +27,6 @@ let store = new Vuex.Store({
           .get(`${jsonUrl}/Restaurants`)
           .then(result => result.data || [])
           .catch(_ => [])
-        console.log(restaurants)
         commit('SET_RESTAURANT', restaurants)
         return resolve(restaurants)
       })
