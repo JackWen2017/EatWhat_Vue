@@ -141,35 +141,4 @@ export default {
 }
 </script>
 
-<style>
-.restaurant-form {
-  background: rgb(252, 249, 119);
-  width: 100%;
-  border-radius: 0px 0px 0px 5px;
-  border: 1.5px solid rgb(19, 10, 145);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-.title {
-  font-weight: bold;
-}
-
-.data {
-  padding-left: 5px;
-  display: flex;
-  align-items: center;
-}
-
-.text {
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 50%;
-}
-
-.radio,
-.checkbox {
-  height: 15px;
-  width: 15px;
-}
-</style>
+<style></style>

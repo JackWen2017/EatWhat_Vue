@@ -52,15 +52,4 @@ export default {
 }
 </script>
 
-<style>
-.restaurant-text {
-  padding-left: 5px;
-  display: flex;
-  align-items: center;
-}
-.text {
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 50%;
-}
-</style>
+<style></style>

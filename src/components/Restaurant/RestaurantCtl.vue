@@ -68,14 +68,4 @@ export default {
 }
 </script>
 
-<style>
-.restaurant-ctl {
-  background: rgb(252, 183, 119);
-  width: 100%;
-  border-radius: 0px 0px 5px 0px;
-  border: 1.5px solid rgb(19, 10, 145);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-</style>
+<style></style>

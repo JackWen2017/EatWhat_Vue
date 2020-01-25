@@ -64,18 +64,4 @@ export default {
 }
 </script>
 
-<style>
-.restaurant-input {
-  padding-left: 5px;
-  display: flex;
-}
-.restaurant-choice {
-  display: flex;
-  align-items: center;
-}
-.radio,
-.chcekbox {
-  height: 15px;
-  width: 15px;
-}
-</style>
+<style></style>

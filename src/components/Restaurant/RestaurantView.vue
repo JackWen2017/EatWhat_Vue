@@ -43,23 +43,4 @@ export default {
 }
 </script>
 
-<style>
-.restaurant-view {
-  background: rgb(28, 206, 152);
-  border: 3px solid rgb(19, 10, 145);
-  border-radius: 10px 10px 0px 0px;
-  box-shadow: 2px 2px 5px cornflowerblue;
-  height: 65vh;
-  width: 95%;
-  margin: auto;
-}
-.list {
-  height: 100%;
-  margin-left: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
-  flex-wrap: wrap;
-}
-</style>
+<style></style>
