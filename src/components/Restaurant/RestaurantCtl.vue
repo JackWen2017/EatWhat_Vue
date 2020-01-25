@@ -11,7 +11,6 @@
 </template>
 
 <script>
-/*eslint-disable*/
 import RestaurantBtn from './RestaurantCommon/RestaurantBtn'
 const btnNameList = {
   distance: ['全部距離', '遠距離', '近距離'],
