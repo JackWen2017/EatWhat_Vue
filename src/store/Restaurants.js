@@ -80,7 +80,7 @@ let restaurant = function() {
       },
       RANDOM_MODE({ dispatch }) {
         let startTime = 0
-        let count = Math.ceil(Math.random() * 3) + 4
+        let count = Math.ceil(Math.random() * 100) + 4
         for (let i = 0; i <= count + 1; i++) {
           let j = i < 2 ? i : count - i
           let addTime = addTimes.hasOwnProperty(j) ? addTimes[j] : 100
