@@ -5,6 +5,7 @@
   box-shadow: 2px 2px 5px cornflowerblue;
   width: 95%;
   margin: auto;
+  margin-top: 5px;
   text-align: center;
   line-height: 90vh;
   font-size: 23px;
@@ -16,34 +17,39 @@
   justify-content: center;
   width: 95%;
   border: 3px solid rgb(19, 10, 145);
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px 10px 0px 0px;
   box-shadow: 2px 2px 5px cornflowerblue;
   margin: auto;
+  margin-top: 5px;
 }
 
 .restaurant-view {
   background: rgb(28, 206, 152);
   border: 3px solid rgb(19, 10, 145);
-  border-radius: 10px 10px 0px 0px;
+  border-top: 3px;
+  border-radius: 0px 0px 10px 10px;
   box-shadow: 2px 2px 5px cornflowerblue;
-  height: 65vh;
   width: 95%;
   margin: auto;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  height: 100%;
 }
 .list {
   height: 100%;
-  margin-left: 5%;
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .restaurant-form {
   background: rgb(252, 249, 119);
   width: 100%;
-  border-radius: 0px 0px 0px 5px;
+  border-radius: 5px 0px 0px 0px;
   border: 1.5px solid rgb(19, 10, 145);
   padding-top: 10px;
   padding-bottom: 10px;
@@ -56,7 +62,7 @@
 .restaurant-ctl {
   background: rgb(252, 183, 119);
   width: 100%;
-  border-radius: 0px 0px 5px 0px;
+  border-radius: 0px 5px 0px 0px;
   border: 1.5px solid rgb(19, 10, 145);
   display: flex;
   flex-direction: column;
@@ -139,4 +145,13 @@
 }
 .delete:hover {
   background-color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-view {
+    height: 65vh;
+  }
+  .list {
+    flex-wrap: wrap;
+  }
 }

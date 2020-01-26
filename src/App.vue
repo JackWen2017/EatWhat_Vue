@@ -15,4 +15,4 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/style.css"></style>
+<style rel="stylesheet" type="text/css" src="@/assets/css/style.css" />

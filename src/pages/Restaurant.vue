@@ -33,4 +33,4 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/restaurant.css"></style>
+<style rel="stylesheet" type="text/css" src="@/assets/css/restaurant.css" />

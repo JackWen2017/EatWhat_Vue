@@ -1,10 +1,10 @@
 <template>
   <div>
-    <RestaurantView @deleteData="deleteData" />
     <div class="restaurant-nav">
       <RestaurantForm @formSend="formSend" />
       <RestaurantCtl @changeFilter="changeFilter" @startRandom="startRandom" />
     </div>
+    <RestaurantView @deleteData="deleteData" />
   </div>
 </template>
 
