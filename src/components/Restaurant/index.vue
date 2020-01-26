@@ -28,6 +28,7 @@ export default {
       await this.$store.dispatch('restaurant/CHANGE_RANDOM')
       let nowRestaurant = this.$store.getters['restaurant/nowRestaurant']
       if (nowRestaurant) alert('就選 ' + nowRestaurant)
+      this.$store.commit('restaurant/SET_CURRENT', 0)
     },
     async insertData(resturants, data) {
       let add = await this.$store.dispatch('INSERT_RESTAURANT', data)
