@@ -126,7 +126,7 @@ export default {
       this.inputList[1].value = [2]
       this.inputList[2].value = [1]
     },
-    async formSend() {
+    formSend() {
       let inputSize = this.inputList.length
       for (let i = 0; i < inputSize; i++) {
         let result = this.checkInput(i)
@@ -135,7 +135,7 @@ export default {
           return
         }
       }
-      await this.$emit('formSend', this.sendValue, this.cleanInput)
+      this.$emit('formSend', this.sendValue, this.cleanInput)
     }
   }
 }

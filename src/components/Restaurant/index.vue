@@ -1,35 +1,24 @@
 <template>
   <div>
-    <div class="restaurant-nav">
-      <RestaurantForm @formSend="formSend" />
-      <RestaurantCtl @changeFilter="changeFilter" @startRandom="startRandom" />
-    </div>
+    <RestaurantNav
+      @changeFilter="changeFilter"
+      @startRandom="startRandom"
+      @formSend="formSend"
+    />
     <RestaurantView @deleteData="deleteData" />
   </div>
 </template>
 
 <script>
+import RestaurantNav from './RestaurantNav'
 import RestaurantView from './RestaurantView'
-import RestaurantForm from './RestaurantForm'
-import RestaurantCtl from './RestaurantCtl'
 export default {
   name: 'Restaurant',
   components: {
     RestaurantView,
-    RestaurantForm,
-    RestaurantCtl
+    RestaurantNav
   },
   methods: {
-    changeFilter(key, value) {
-      this.$store.commit('restaurant/SET_CURRENT', 0)
-      this.$store.commit('restaurant/SET_FILTER', { key, value })
-    },
-    async startRandom() {
-      await this.$store.dispatch('restaurant/CHANGE_RANDOM')
-      let nowRestaurant = this.$store.getters['restaurant/nowRestaurant']
-      if (nowRestaurant) alert('就選 ' + nowRestaurant)
-      this.$store.commit('restaurant/SET_CURRENT', 0)
-    },
     async insertData(resturants, data) {
       let add = await this.$store.dispatch('INSERT_RESTAURANT', data)
       let result =
@@ -68,6 +57,16 @@ export default {
       }
       // await this.$store.dispatch('GET_RESTAURANT')
       callback()
+    },
+    changeFilter(key, value) {
+      this.$store.commit('restaurant/SET_CURRENT', 0)
+      this.$store.commit('restaurant/SET_FILTER', { key, value })
+    },
+    async startRandom() {
+      await this.$store.dispatch('restaurant/CHANGE_RANDOM')
+      let nowRestaurant = this.$store.getters['restaurant/nowRestaurant']
+      if (nowRestaurant) alert('就選 ' + nowRestaurant)
+      this.$store.commit('restaurant/SET_CURRENT', 0)
     },
     async deleteData(id) {
       await this.$store.dispatch('DELETE_RESTAURANT', id)

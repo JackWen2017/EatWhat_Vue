@@ -31,7 +31,7 @@ export default {
   computed: {
     btnDisabled() {
       let ctrlDisable = this.$store.getters['restaurant/ctrlDisable']
-      return ctrlDisable ? ctrlDisable : false
+      return ctrlDisable
     },
     btnList() {
       let btns = []

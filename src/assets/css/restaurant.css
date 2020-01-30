@@ -14,6 +14,7 @@
 
 .restaurant-nav {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 95%;
   border: 3px solid rgb(19, 10, 145);
@@ -21,6 +22,36 @@
   box-shadow: 2px 2px 5px cornflowerblue;
   margin: auto;
   margin-top: 5px;
+}
+
+.restaurant-box-ctrl {
+  background-color: rgb(80, 241, 215);
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  height: 20px;
+}
+
+.restaurant-box-ctrl::before {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 36px;
+  background-color: #000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0 4px 0 #000, 0 -4px 0 #000;
+}
+
+.restaurant-box-text {
+  display: none;
+}
+
+.restaurant-box {
+  display: flex;
+  border-top: 3px solid rgb(19, 10, 145);
 }
 
 .restaurant-view {
@@ -49,7 +80,7 @@
 .restaurant-form {
   background: rgb(252, 249, 119);
   width: 100%;
-  border-radius: 5px 0px 0px 0px;
+  /* border-radius: 5px 0px 0px 0px; */
   border-right: 3px solid rgb(19, 10, 145);
   padding-top: 10px;
   padding-bottom: 10px;
@@ -62,7 +93,7 @@
 .restaurant-ctl {
   background: rgb(252, 183, 119);
   width: 100%;
-  border-radius: 0px 5px 0px 0px;
+  /* border-radius: 0px 5px 0px 0px; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -148,18 +179,61 @@
 
 @media screen and (min-width: 768px) {
   .restaurant-view {
-    height: 65vh;
+    height: 55vh;
   }
   .list {
     flex-wrap: wrap;
   }
+
   .restaurant-form {
-    border-top: 1.5px solid rgb(19, 10, 145);
-    border-bottom: 1.5px solid rgb(19, 10, 145);
-    border-left: 1.5px solid rgb(19, 10, 145);
+    border-left: 0.5px solid rgb(19, 10, 145);
   }
 
   .restaurant-ctl {
-    border: 1.5px solid rgb(19, 10, 145);
+    border-right: 0.5px solid rgb(19, 10, 145);
   }
+
+  .restaurant-box-ctrl {
+    border: 0.5px solid rgb(19, 10, 145);
+    border-radius: 7px 7px 0 0;
+  }
+
+  .restaurant-box-ctrl::before {
+    content: '';
+    position: absolute;
+    /* width: 70px; */
+    background-color: rgba(0, 0, 0, 0);
+    /* bottom: 15px; */
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0), 0 -4px 0 rgba(0, 0, 0, 0);
+    /* font-weight: bold; */
+  }
+
+  .restaurant-box-text {
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.slide-enter-to,
+.slide-leave {
+  overflow: hidden;
+  max-height: 100px;
+}
+
+.slide-enter,
+.slide-leave-to {
+  overflow: hidden;
+  max-height: 0;
+}
+
+.slide-enter-active {
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+.slide-leave-active {
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
 }
