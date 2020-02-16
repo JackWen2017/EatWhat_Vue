@@ -1,5 +1,5 @@
 .restaurant {
-  background: rgb(28, 206, 152);
+  background: rgb(143, 130, 219);
   border: 3px solid rgb(19, 10, 145);
   border-radius: 10px;
   box-shadow: 2px 2px 5px cornflowerblue;
@@ -25,7 +25,7 @@
 }
 
 .restaurant-box-ctrl {
-  background-color: rgb(80, 241, 215);
+  background-color: rgb(143, 130, 219);
   border-radius: 10px 10px 0px 0px;
   position: relative;
   height: 20px;
@@ -55,7 +55,7 @@
 }
 
 .restaurant-view {
-  background: rgb(28, 206, 152);
+  background: rgb(143, 130, 219);
   border: 3px solid rgb(19, 10, 145);
   border-top: 3px;
   border-radius: 0px 0px 10px 10px;
@@ -78,7 +78,7 @@
 }
 
 .restaurant-form {
-  background: rgb(252, 249, 119);
+  background: rgb(204, 136, 224);
   width: 100%;
   /* border-radius: 5px 0px 0px 0px; */
   border-right: 3px solid rgb(19, 10, 145);
@@ -91,7 +91,7 @@
 }
 
 .restaurant-ctl {
-  background: rgb(252, 183, 119);
+  background: rgb(206, 113, 156);
   width: 100%;
   /* border-radius: 0px 5px 0px 0px; */
   display: flex;
@@ -163,6 +163,10 @@
   border-bottom: 10px solid rgba(0, 0, 0, 0);
   border-left: 10px solid yellow;
 }
+.restaurant-item.hidden {
+  text-decoration: line-through rgb(139, 17, 17);
+}
+
 .delete {
   background-color: rgb(150, 3, 3);
   width: 20px;
